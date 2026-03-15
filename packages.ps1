@@ -18,6 +18,7 @@ $applications = @(
     [PSCustomObject]@{ Name = "Outlook for Windows"; Identifier = "9NRX63209R7B"; Source = "msstore" },
     [PSCustomObject]@{ Name = "RealVNC Viewer"; Identifier = "RealVNC.Viewer"; Source = "winget" },
     [PSCustomObject]@{ Name = "Bitwarden"; Identifier = "Bitwarden.Bitwarden"; Source = "winget" },
+    [PSCustomObject]@{ Name = "Bitwarden CLI"; Identifier = "Bitwarden.CLI"; Source = "winget" },
     [PSCustomObject]@{ Name = "RipGrep GNU"; Identifier = "BurntSushi.ripgrep.GNU"; Source = "winget" },
     [PSCustomObject]@{ Name = "Flow Launcher"; Identifier = "Flow-Launcher.Flow-Launcher"; Source = "winget" },
     [PSCustomObject]@{ Name = "lazygit"; Identifier = "JesseDuffield.lazygit"; Source = "winget" },

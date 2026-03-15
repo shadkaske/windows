@@ -1,3 +1,11 @@
+
+
+# Add Bitwarden CLI to PATH
+$bwPath = Get-ChildItem "$env:LOCALAPPDATA\Microsoft\WinGet\Packages" -Recurse -Filter bw.exe -ErrorAction SilentlyContinue | Select-Object -First 1 -ExpandProperty DirectoryName
+if ($bwPath) {
+    $env:PATH += ";$bwPath"
+}
+
 Set-Alias -Name z -Value __zoxide_z -Option AllScope -Scope Global -Force
 Set-Alias -Name zi -Value __zoxide_zi -Option AllScope -Scope Global -Force
 Set-Alias -Name lg -Value lazygit -Option AllScope -Scope Global -Force
