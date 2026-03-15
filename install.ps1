@@ -32,4 +32,3 @@ if ($Fonts) {
 if ($Configs) {
     Start-Process powershell -ArgumentList "-NoProfile -ExecutionPolicy Bypass -File $PWD\symlink_configs.ps1" -Verb RunAs -Wait
 }
-
