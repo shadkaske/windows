@@ -4,9 +4,11 @@ function Install-Application {
         [PSCustomObject]$AppObject
     )
 
-    Write-Host "Installing $($AppObject.Name)..."
+    Clear-Host
+    Write-Host "`e[1;34mInstalling $($AppObject.Name)...`e[0m"
 
-    winget install --id $AppObject.Identifier --source $AppObject.Source --silent --accept-package-agreements > $null
+    winget install --id $AppObject.Identifier --source $AppObject.Source --accept-package-agreements --silent
+    Start-Sleep -Seconds 1.2
 }
 
 # Array of applications to install
@@ -42,12 +44,15 @@ $applications = @(
     [PSCustomObject]@{ Name = "Tailscale"; Identifier = "Tailscale.Tailscale"; Source = "winget" },
     [PSCustomObject]@{ Name = "Bruno"; Identifier = "Bruno.Bruno"; Source = "winget" },
     [PSCustomObject]@{ Name = "SQL Server Management Studio 22"; Identifier = "Microsoft.SQLServerManagementStudio.22"; Source = "winget" }
+    [PSCustomObject]@{ Name = "Visual Studio Professional 2026"; Identifier = "Microsoft.VisualStudio.Professional"; Source = "winget" }
 )
 
 # Loop through each application and install
 foreach ($app in $applications) {
     Install-Application -AppObject $app
 }
+
+Clear-Host
 
 # Install Powershell Modules
 Install-Module -Name PSFzf -Scope CurrentUser -Force -WarningAction SilentlyContinue
