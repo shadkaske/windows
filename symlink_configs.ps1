@@ -33,3 +33,34 @@ foreach ($file in $files) {
     New-Item -ItemType SymbolicLink -Path $targetPath -Target $file.FullName -Force
     Write-Host "Created symlink: $targetPath -> $($file.FullName)"
 }
+
+# Add GlazeWM to startup
+$glazewmPath = Get-ChildItem "$env:ProgramFiles" -Recurse -Filter glazewm.exe -ErrorAction SilentlyContinue | Select-Object -First 1 -ExpandProperty FullName
+if ($glazewmPath) {
+    $startupPath = "$env:APPDATA\Microsoft\Windows\Start Menu\Programs\StartUp"
+    $shortcutPath = Join-Path $startupPath "GlazeWM.lnk"
+    $WshShell = New-Object -comObject WScript.Shell
+    $Shortcut = $WshShell.CreateShortcut($shortcutPath)
+    $Shortcut.TargetPath = $glazewmPath
+    $Shortcut.WorkingDirectory = $env:USERPROFILE
+    $Shortcut.Save()
+    Write-Host "Added GlazeWM to startup."
+} else {
+    Write-Host "GlazeWM executable not found, skipping startup shortcut."
+}
+
+# Add Kanata to startup
+$kanataPath = Get-ChildItem "$env:LOCALAPPDATA\Microsoft\WinGet\Packages" -Recurse -Filter "kanata_windows_gui*cmd_allowed*x64.exe" -ErrorAction SilentlyContinue | Select-Object -First 1 -ExpandProperty FullName
+if ($kanataPath) {
+    $startupPath = "$env:APPDATA\Microsoft\Windows\Start Menu\Programs\StartUp"
+    $shortcutPath = Join-Path $startupPath "Kanata.lnk"
+    $WshShell = New-Object -comObject WScript.Shell
+    $Shortcut = $WshShell.CreateShortcut($shortcutPath)
+    $Shortcut.TargetPath = $kanataPath
+    $Shortcut.Arguments = '--cfg "' + $env:USERPROFILE + '\.config\kanata.kbd"'
+    $Shortcut.WorkingDirectory = $env:USERPROFILE
+    $Shortcut.Save()
+    Write-Host "Added Kanata to startup."
+} else {
+    Write-Host "Kanata executable not found, skipping startup shortcut."
+}
