@@ -4,6 +4,13 @@ function Install-NerdFont {
         [string]$FontName
     )
 
+    # Check if any font files for this family are already installed
+    $fontDir = "$env:LOCALAPPDATA\Microsoft\Windows\Fonts"
+    if (Get-ChildItem $fontDir -Filter "*$FontName*" -File -ErrorAction SilentlyContinue) {
+        Write-Host "$FontName fonts already installed, skipping."
+        return
+    }
+
     Write-Host "Installing $FontName Nerd Font..."
 
     $tempDir = [System.IO.Path]::GetTempPath()
@@ -54,7 +61,6 @@ function Install-NerdFont {
 # Array of Nerd Fonts to install
 $nerdFonts = @(
     "JetBrainsMono"
-    "SourceCodePro"
 )
 
 # Loop through each Nerd Font and install
