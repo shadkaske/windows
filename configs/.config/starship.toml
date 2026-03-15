@@ -1,0 +1,119 @@
+format = """
+$os\
+$sudo\
+$shell\
+$username\
+$hostname\
+$directory\
+$git_branch\
+$git_state\
+$git_status\
+$direnv\
+\n$character"""
+
+right_format = """
+$status\
+$python\
+"""
+
+continuation_prompt = " ❯❯ " # $nodejs\
+
+command_timeout = 1200
+
+add_newline = true
+
+[os]
+disabled = false
+style = "dimmed cyan"
+
+[os.symbols]
+Fedora = " "
+Arch = " "
+Mint = " "
+Linux = " "
+Pop = " "
+Ubuntu = " "
+Macos = " "
+Windows = " "
+
+[status]
+format = '[$status]($style)'
+disabled = false
+
+[sudo]
+format = '[$symbol]($style)'
+disabled = false
+symbol = " "
+
+[hostname]
+ssh_symbol = ' 󰣀'
+format = "@(dimmmed white)[$hostname$ssh_symbol]($style) "
+
+[username]
+format = "[$user]($style)"
+style_user = 'dimmed bright-yellow'
+
+[directory]
+style = "blue"
+truncate_to_repo = false
+truncation_length = 5
+read_only = " "
+read_only_style = "red"
+
+[direnv]
+disabled = false
+symbol = " 󰵮"
+format = "[$symbol]($style)"
+
+[shell]
+disabled = false
+
+[character]
+success_symbol = "[❯](purple)"
+error_symbol = "[❯](red)"
+vimcmd_symbol = "[❮](green)"
+
+[git_branch]
+format = "[$symbol](dimmed white)[$branch]($style)"
+style = "purple"
+symbol = " "
+
+[git_status]
+format = " ([$all_status$ahead_behind]($style))"
+style = "cyan"
+stashed = "≡"
+
+[git_state]
+format = '\([$state( $progress_current/$progress_total)]($style)\) '
+style = "bright-black"
+
+[cmd_duration]
+disabled = false
+format = " [$duration]($style) "
+style = "yellow"
+
+[python]
+format = "[$symbol](green)[$virtualenv]($style) "
+style = "bright-black"
+symbol = " "
+
+[nodejs]
+format = " [$symbol]($style)[$version](dimmed white)"
+style = "dimmed blue"
+symbol = " "
+version_format = "$major.$minor"
+
+[php]
+format = " [$symbol]($style)[$version](dimmed white)"
+style = "dimmed purple"
+symbol = " "
+version_format = "$major.$minor"
+
+[custom.laravel]
+format = "[$symbol]($style)[$output](dimmed white)"
+command = 'php artisan --version | cut -d" " -f3-'
+detect_files = ['composer.json', 'artisan']
+detect_folders = ['vendor']
+require_repo = true
+symbol = "󰫐 "
+style = "dimmed red"

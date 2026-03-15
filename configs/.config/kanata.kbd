@@ -1,0 +1,36 @@
+;; defsrc is still necessary
+(defcfg
+  process-unmapped-keys yes
+)
+
+(defsrc
+  r u caps a s d f g h j k l ; ' v n
+)
+(defvar
+  tap-time 150
+  hold-time 275
+)
+
+(defalias
+  r (tap-hold $tap-time $hold-time r (multi lctl lalt lsft))
+  u (tap-hold $tap-time $hold-time u (multi lctl lalt lsft))
+  capslock (tap-hold 100 100 esc (multi lmeta lctl lsft lalt))
+  a (tap-hold $tap-time $hold-time a lctl)
+  s (tap-hold $tap-time $hold-time s lalt)
+  d (tap-hold $tap-time $hold-time d lmet)
+  f (tap-hold $tap-time $hold-time f lsft)
+  g (tap-hold $tap-time $hold-time g (multi lmeta lalt))
+  h (tap-hold $tap-time $hold-time h (multi lmeta lalt))
+  j (tap-hold $tap-time $hold-time j rsft)
+  k (tap-hold $tap-time $hold-time k rmet)
+  l (tap-hold $tap-time $hold-time l ralt)
+  ; (tap-hold $tap-time $hold-time ; rctl)
+  ' (tap-hold 175 275 ' (multi lmeta lctl lsft lalt))
+  v (tap-hold $tap-time $hold-time v (multi lsft lctl))
+  n (tap-hold $tap-time $hold-time n (multi lsft lctl))
+)
+
+(deflayer base
+  @r @u @capslock @a @s @d @f @g @h @j @k @l @; @' @v @n
+)
+
