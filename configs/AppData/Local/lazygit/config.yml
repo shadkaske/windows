@@ -1,0 +1,6 @@
+os:
+  editPreset: "vscode"
+promptToReturnFromSubprocess: false
+gui:
+  nerdFontsVersion: "3"
+  showRandomTip: false
