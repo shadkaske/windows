@@ -3,8 +3,16 @@ param (
     [switch]$Fonts,
     [switch]$Configs,
     [switch]$Startup,
+    [switch]$All,
     [switch]$Help
 )
+
+if ($All) {
+    $Packages = $true
+    $Fonts = $true
+    $Configs = $true
+    $Startup = $true
+}
 
 if ($Help -or ($Packages -eq $false -and $Fonts -eq $false -and $Configs -eq $false -and $Startup -eq $false)) {
     Write-Host "Usage: .\system_config.ps1 [options]"
@@ -13,10 +21,14 @@ if ($Help -or ($Packages -eq $false -and $Fonts -eq $false -and $Configs -eq $fa
     Write-Host "  -Fonts       Install Nerd Fonts"
     Write-Host "  -Configs     Create symbolic links for config files"
     Write-Host "  -Startup     Create Shell Startup Shortcuts"
+    Write-Host "  -All         Run all setup steps (equivalent to -Packages -Fonts -Configs -Startup)"
     Write-Host "  -Help        Show this help message"
     Write-Host "Examples:"
     Write-Host "  .\system_config.ps1 -Packages -Fonts  # Install packages and fonts"
+    Write-Host "  .\system_config.ps1 -Fonts            # Install Configured Fonts"
     Write-Host "  .\system_config.ps1 -Configs          # Link configs"
+    Write-Host "  .\system_config.ps1 -Startup          # Setup Run At Startup Items"
+    Write-Host "  .\system_config.ps1 -All              # Run all setup steps"
     exit
 }
 
