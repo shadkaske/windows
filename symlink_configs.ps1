@@ -1,4 +1,9 @@
-# Script to create symbolic links for config files from configs/ to %USERPROFILE%
+
+param(
+    [string]$userPath = $env:USERPROFILE
+)
+
+# Script to create symbolic links for config files from configs/ to $userPath
 
 $configsDir = Join-Path $PSScriptRoot "configs"
 
@@ -15,8 +20,8 @@ foreach ($file in $files) {
     $relativePath = $file.FullName -replace [regex]::Escape($configsDir), ''
     $relativePath = $relativePath.TrimStart('\')  # Remove leading backslash
 
-    # Target path in USERPROFILE
-    $targetPath = Join-Path $env:USERPROFILE $relativePath
+    # Target path in userPath
+    $targetPath = Join-Path $userPath $relativePath
 
     # Ensure target directory exists
     $targetDir = Split-Path $targetPath
@@ -42,7 +47,7 @@ if ($glazewmPath) {
     $WshShell = New-Object -comObject WScript.Shell
     $Shortcut = $WshShell.CreateShortcut($shortcutPath)
     $Shortcut.TargetPath = $glazewmPath
-    $Shortcut.WorkingDirectory = $env:USERPROFILE
+    $Shortcut.WorkingDirectory = $userPath
     $Shortcut.Save()
     Write-Host "Added GlazeWM to startup."
 } else {
@@ -57,8 +62,8 @@ if ($kanataPath) {
     $WshShell = New-Object -comObject WScript.Shell
     $Shortcut = $WshShell.CreateShortcut($shortcutPath)
     $Shortcut.TargetPath = $kanataPath
-    $Shortcut.Arguments = '--cfg "' + $env:USERPROFILE + '\.config\kanata.kbd"'
-    $Shortcut.WorkingDirectory = $env:USERPROFILE
+    $Shortcut.Arguments = '--cfg "' + $userPath + '\.config\kanata.kbd"'
+    $Shortcut.WorkingDirectory = $userPath
     $Shortcut.Save()
     Write-Host "Added Kanata to startup."
 } else {

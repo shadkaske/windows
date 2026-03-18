@@ -30,5 +30,8 @@ if ($Fonts) {
 
 # Link configs if requested
 if ($Configs) {
-    Start-Process powershell -ArgumentList "-NoProfile -ExecutionPolicy Bypass -File $PWD\symlink_configs.ps1" -Verb RunAs -Wait
+    $userPath = $env:USERPROFILE
+    $symlinkScript = Join-Path $PWD 'symlink_configs.ps1'
+    $args = "-NoProfile -ExecutionPolicy Bypass -File `"$symlinkScript`" -userPath `"$userPath`""
+    Start-Process powershell -ArgumentList $args -Verb RunAs -Wait
 }
