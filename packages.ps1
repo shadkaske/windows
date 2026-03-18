@@ -15,11 +15,11 @@ function Install-Application {
 $applications = @(
     [PSCustomObject]@{ Name = "DBeaver CE"; Identifier = "9PNKDR50694P"; Source = "msstore" },
     [PSCustomObject]@{ Name = "Docker Desktop"; Identifier = "XP8CBJ40XLBWKX"; Source = "msstore" },
-    [PSCustomObject]@{ Name = "Outlook for Windows"; Identifier = "9NRX63209R7B"; Source = "msstore" },
+    # [PSCustomObject]@{ Name = "Outlook for Windows"; Identifier = "9NRX63209R7B"; Source = "msstore" },
     [PSCustomObject]@{ Name = "Visual Studio Code"; Identifier = "XP9KHM4BK9FZ7Q"; Source = "msstore" },
-    [PSCustomObject]@{ Name = "Bitwarden CLI"; Identifier = "Bitwarden.CLI"; Source = "winget" },
+    # [PSCustomObject]@{ Name = "Bitwarden CLI"; Identifier = "Bitwarden.CLI"; Source = "winget" },
     [PSCustomObject]@{ Name = "Bitwarden"; Identifier = "Bitwarden.Bitwarden"; Source = "winget" },
-    [PSCustomObject]@{ Name = "Bruno"; Identifier = "Bruno.Bruno"; Source = "winget" },
+    # [PSCustomObject]@{ Name = "Bruno"; Identifier = "Bruno.Bruno"; Source = "winget" },
     [PSCustomObject]@{ Name = "Ditto"; Identifier = "Ditto.Ditto"; Source = "winget" },
     [PSCustomObject]@{ Name = "Git"; Identifier = "Git.Git"; Source = "winget" },
     [PSCustomObject]@{ Name = "GlazeWM"; Identifier = "glzr-io.glazewm"; Source = "winget" },
@@ -41,8 +41,10 @@ $applications = @(
     [PSCustomObject]@{ Name = "Visual Studio Professional 2026"; Identifier = "Microsoft.VisualStudio.Professional"; Source = "winget" }
     [PSCustomObject]@{ Name = "YASB Reborn"; Identifier = "AmN.yasb"; Source = "winget" },
     [PSCustomObject]@{ Name = "bat"; Identifier = "sharkdp.bat"; Source = "winget" },
+    [PSCustomObject]@{ Name = "less"; Identifier = "jftuga.less"; Source = "winget" },
     [PSCustomObject]@{ Name = "fzf"; Identifier = "junegunn.fzf"; Source = "winget" },
     [PSCustomObject]@{ Name = "lazygit"; Identifier = "JesseDuffield.lazygit"; Source = "winget" },
+    [PSCustomObject]@{ Name = "zellij"; Identifier = "JesseDuffield.arndawg.zellij-windows"; Source = "winget" },
     [PSCustomObject]@{ Name = "starship"; Identifier = "Starship.Starship"; Source = "winget" },
     [PSCustomObject]@{ Name = "zoxide"; Identifier = "ajeetdsouza.zoxide"; Source = "winget" }
 )
