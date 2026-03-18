@@ -8,7 +8,7 @@ function Install-Application {
     Write-Host "`e[1;34mInstalling $($AppObject.Name)...`e[0m"
 
     winget install -e --id $AppObject.Identifier --source $AppObject.Source --accept-package-agreements --silent
-    Start-Sleep -Seconds 1
+    Start-Sleep -Seconds 0.7
 }
 
 # Array of applications to install
