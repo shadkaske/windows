@@ -10,6 +10,8 @@ if ($bwPath) {
 Set-Alias -Name z -Value __zoxide_z -Option AllScope -Scope Global -Force
 Set-Alias -Name zi -Value __zoxide_zi -Option AllScope -Scope Global -Force
 Set-Alias -Name lg -Value lazygit -Option AllScope -Scope Global -Force
+Set-Alias -Name ll -Value Get-Childitem -Option AllSCope -Scope Global -Force
+Set-Alias -Name l -Value Get-Childitem -Option AllSCope -Scope Global -Force
 
 Set-PSReadlineKeyHandler -Key ctrl+d -Function DeleteCharOrExit
 
