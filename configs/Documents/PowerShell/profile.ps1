@@ -1,4 +1,5 @@
-
+# Set direcotry highlighting to a sane value
+$PSStyle.FileInfo.Directory = "`e[0;34m"
 
 # Add Bitwarden CLI to PATH
 $bwPath = Get-ChildItem "$env:LOCALAPPDATA\Microsoft\WinGet\Packages" -Recurse -Filter bw.exe -ErrorAction SilentlyContinue | Select-Object -First 1 -ExpandProperty DirectoryName
