@@ -143,6 +143,9 @@ window_rules:
       # ignore rules for SSMS Windows
       - window_process: { equals: "SSMS" }
 
+      # Ignore Rules for iForms Designer
+      - window_process: { regex: "iForms.Designer.*" }
+
       # Ignore rules for various 3rd-party apps.
       - window_process: { equals: "PowerToys" }
         window_class: { regex: 'HwndWrapper\[PowerToys\.PowerAccent.*?\]' }
