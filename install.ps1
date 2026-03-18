@@ -34,8 +34,8 @@ if ($Fonts) {
 if ($Configs) {
     $userPath = $env:USERPROFILE
     $symlinkScript = Join-Path $PWD 'symlink_configs.ps1'
-    $args = "-NoProfile -ExecutionPolicy Bypass -File `"$symlinkScript`" -userPath `"$userPath`""
-    Start-Process powershell -ArgumentList $args -Verb RunAs -Wait
+    $argString = "-NoProfile -ExecutionPolicy Bypass -File `"$symlinkScript`" -userPath `"$userPath`""
+    Start-Process powershell -ArgumentList $argString -Verb RunAs -Wait
 }
 
 if ($Startup) {
