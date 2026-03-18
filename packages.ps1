@@ -20,6 +20,7 @@ $applications = @(
     [PSCustomObject]@{ Name = "Bitwarden CLI"; Identifier = "Bitwarden.CLI"; Source = "winget" },
     [PSCustomObject]@{ Name = "Bitwarden"; Identifier = "Bitwarden.Bitwarden"; Source = "winget" },
     [PSCustomObject]@{ Name = "Bruno"; Identifier = "Bruno.Bruno"; Source = "winget" },
+    [PSCustomObject]@{ Name = "Ditto"; Identifier = "Ditto.Ditto"; Source = "winget" },
     [PSCustomObject]@{ Name = "Git"; Identifier = "Git.Git"; Source = "winget" },
     [PSCustomObject]@{ Name = "GlazeWM"; Identifier = "glzr-io.glazewm"; Source = "winget" },
     [PSCustomObject]@{ Name = "Google Chrome"; Identifier = "Google.Chrome"; Source = "winget" },
@@ -43,7 +44,7 @@ $applications = @(
     [PSCustomObject]@{ Name = "fzf"; Identifier = "junegunn.fzf"; Source = "winget" },
     [PSCustomObject]@{ Name = "lazygit"; Identifier = "JesseDuffield.lazygit"; Source = "winget" },
     [PSCustomObject]@{ Name = "starship"; Identifier = "Starship.Starship"; Source = "winget" },
-    [PSCustomObject]@{ Name = "zoxide"; Identifier = "ajeetdsouza.zoxide"; Source = "winget" },
+    [PSCustomObject]@{ Name = "zoxide"; Identifier = "ajeetdsouza.zoxide"; Source = "winget" }
 )
 
 # Loop through each application and install
