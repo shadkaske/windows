@@ -2,9 +2,14 @@
 $PSStyle.FileInfo.Directory = "`e[0;34m"
 
 # Add Bitwarden CLI to PATH
-$bwPath = Get-ChildItem "$env:LOCALAPPDATA\Microsoft\WinGet\Packages" -Recurse -Filter bw.exe -ErrorAction SilentlyContinue | Select-Object -First 1 -ExpandProperty DirectoryName
-if ($bwPath) {
-    $env:PATH += ";$bwPath"
+# $bwPath = Get-ChildItem "$env:LOCALAPPDATA\Microsoft\WinGet\Packages" -Recurse -Filter bw.exe -ErrorAction SilentlyContinue | Select-Object -First 1 -ExpandProperty DirectoryName
+# if ($bwPath) {
+#     $env:PATH += ";$bwPath"
+# }
+
+$batPath = Get-ChildItem $env:LOCALAPPDATA\Microsoft\WinGet\Packages -Recurse -Filter bat.exe -ErrorAction SilentlyContinue | Select-Object -First 1 -ExpandProperty DirectoryName
+if ($batPath) {
+    $env:PATH += ";$batPath"
 }
 
 Set-Alias -Name z -Value __zoxide_z -Option AllScope -Scope Global -Force
