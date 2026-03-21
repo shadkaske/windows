@@ -1,2 +1,4 @@
 configs/.glzr/glazewm/errors.log
 configs/.config/yasb/yasb.log
+/configs/.config/git/.lesshst
+/configs/AppData/Local/lazygit/state.yml
