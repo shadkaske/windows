@@ -44,10 +44,12 @@ if ($Fonts) {
 
 # Link configs if requested
 if ($Configs) {
-    $userPath = $env:USERPROFILE
-    $symlinkScript = Join-Path $PWD 'symlink_configs.ps1'
-    $argString = "-NoProfile -ExecutionPolicy Bypass -File `"$symlinkScript`" -userPath `"$userPath`""
-    Start-Process powershell -ArgumentList $argString -Verb RunAs -Wait
+    # Set User Environment Variable for HOME
+    $gitHomePath = "$env:USERPROFILE\.config\git"
+    $starshipPath = "$env:USERPROFILE\.config\starship\starship.toml"
+    [System.Environment]::SetEnvironmentVariable("HOME", $gitHomePath, "User")
+    [System.Environment]::SetEnvironmentVariable("STARSHIP_CONFIG", $starshipPath, "User")
+    . .\junctions.ps1
 }
 
 if ($Startup) {
@@ -59,7 +61,7 @@ if ($Startup) {
         $WshShell = New-Object -comObject WScript.Shell
         $Shortcut = $WshShell.CreateShortcut($shortcutPath)
         $Shortcut.TargetPath = $glazewmPath
-        $Shortcut.WorkingDirectory = $userPath
+        $Shortcut.WorkingDirectory = $env:USERPROFILE
         $Shortcut.Save()
         Write-Host "Added GlazeWM to startup."
     } else {
@@ -74,8 +76,8 @@ if ($Startup) {
         $WshShell = New-Object -comObject WScript.Shell
         $Shortcut = $WshShell.CreateShortcut($shortcutPath)
         $Shortcut.TargetPath = $kanataPath
-        $Shortcut.Arguments = '--cfg "' + $userPath + '\.config\kanata.kbd"'
-        $Shortcut.WorkingDirectory = $userPath
+        $Shortcut.Arguments = '--cfg "' + $env:USERPROFILE + '\.config\kanata\kanata.kbd"'
+        $Shortcut.WorkingDirectory = $env:USERPROFILE
         $Shortcut.Save()
         Write-Host "Added Kanata to startup."
     } else {
