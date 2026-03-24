@@ -84,3 +84,8 @@ if ($Startup) {
         Write-Host "Kanata executable not found, skipping startup shortcut."
     }
 }
+
+# Disable Office Key Nonsense
+# REG ADD HKCU\Software\Classes\ms-officeapp\Shell\Open\Command /t REG_SZ /d rundll32
+New-Item -Path "HKCU:\Software\Classes\ms-officeapp\Shell\Open" -Force
+New-ItemProperty -Path "HKCU:\Software\Classes\ms-officeapp\Shell\Open" -Name "Command" -PropertyType String -Value "rundll32" -Force

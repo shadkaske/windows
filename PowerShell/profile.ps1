@@ -14,6 +14,11 @@ if ($batPath) {
     $env:PATH += ";$batPath"
 }
 
+$gitPath = Get-ChildItem $env:LOCALAPPDATA\Programs\Git -Recurse -Filter git.exe -ErrorAction SilentlyContinue | Select-Object -First 1 -ExpandProperty DirectoryName
+if ($gitPath) {
+    $env:PATH += ";$gitPath"
+}
+
 Set-Alias -Name z -Value __zoxide_z -Option AllScope -Scope Global -Force
 Set-Alias -Name zi -Value __zoxide_zi -Option AllScope -Scope Global -Force
 Set-Alias -Name lg -Value lazygit -Option AllScope -Scope Global -Force
