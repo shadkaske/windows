@@ -40,7 +40,6 @@ bars:
       right: 0
     widgets:
       left:
-        - "home"
         - "glazewm_workspaces"
         - "active_window"
         - glazewm_binding_mode
@@ -52,6 +51,7 @@ bars:
         - "weather"
         - "microphone"
         - "volume"
+        - "battery"
         - "notifications"
         - "power_menu"
 widgets:
@@ -263,3 +263,33 @@ widgets:
       hide_if_no_active: true
       label_if_no_active: No binding mode active
       default_icon: 
+  battery:
+    type: "yasb.battery.BatteryWidget"
+    options:
+      label: "<span>{icon}</span> {percent}%"
+      label_alt: "<span>{icon}</span> {percent}% | {power}W | {time_remaining}"
+      update_interval: 5000
+      time_remaining_natural: False
+      hide_unsupported: True
+      charging_options:
+        icon_format: "{charging_icon}"
+        blink_charging_icon: true
+        blink_interval: 500
+      status_thresholds:
+        critical: 10
+        low: 25
+        medium: 75
+        high: 95
+        full: 100
+      status_icons:
+        icon_charging: "\uf0e7"
+        icon_critical: "\uf244"
+        icon_low: "\uf243"
+        icon_medium: "\uf242"
+        icon_high: "\uf241"
+        icon_full: "\uf240"
+      label_shadow:
+        enabled: true
+        color: "black"
+        radius: 3
+        offset: [ 1, 1 ]

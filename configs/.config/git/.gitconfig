@@ -4,3 +4,9 @@
     email = shadkaske@gmail.com
 [pull]
 	rebase = true
+[mergetool "vscode"]
+	cmd = code --wait --merge $REMOTE $LOCAL $BASE $MERGED
+[merge]
+	tool = vscode
+[safe]
+	directory = %(prefix)///swp-insightdev.showplacewood.com/CopyCode/
