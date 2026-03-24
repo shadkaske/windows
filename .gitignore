@@ -2,3 +2,10 @@ configs/.glzr/glazewm/errors.log
 configs/.config/yasb/yasb.log
 /configs/.config/git/.lesshst
 /configs/AppData/Local/lazygit/state.yml
+configs/.config/git/.bash_history
+/configs/.config/git/.ssh/id_ed25519
+/configs/.config/git/.ssh/known_hosts
+/configs/.config/git/.ssh/known_hosts.old
+/configs/.config/git/.bash_profile
+/configs/.config/git/.bashrc
+/configs/.config/git/.viminfo
