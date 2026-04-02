@@ -9,3 +9,5 @@ configs/.config/git/.bash_history
 /configs/.config/git/.bash_profile
 /configs/.config/git/.bashrc
 /configs/.config/git/.viminfo
+configs/.config/git/.ssh/config
+configs/.config/git/.config/jgit/config
