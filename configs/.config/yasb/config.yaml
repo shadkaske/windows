@@ -14,7 +14,7 @@ bars:
     screens: ["*"]
     class_name: "yasb-bar"
     alignment:
-      position: "top"
+      position: "bottom"
       center: false
     animation:
       enabled: true
@@ -32,7 +32,7 @@ bars:
       hide_on_fullscreen: true
     dimensions:
       width: "100%"
-      height: 32
+      height: 48
     padding:
       top: 0
       left: 0
@@ -41,19 +41,19 @@ bars:
     widgets:
       left:
         - "glazewm_workspaces"
-        - "active_window"
-        - glazewm_binding_mode
-      center:
-        - "clock"
         - glazewm_tiling_direction
-      right:
-        - "media"
-        - "weather"
-        - "microphone"
-        - "volume"
-        - "battery"
-        - "notifications"
-        - "power_menu"
+        # - "active_window"
+        # - glazewm_binding_mode
+      # center:
+        # - "clock"
+      # right:
+      #   - "media"
+      #   - "weather"
+      #   - "microphone"
+      #   - "volume"
+      #   - "battery"
+      #   - "notifications"
+      #   - "power_menu"
 widgets:
   home:
     type: "yasb.home.HomeWidget"
