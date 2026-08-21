@@ -14,14 +14,14 @@ bars:
     screens: ["*"]
     class_name: "yasb-bar"
     alignment:
-      position: "bottom"
-      center: false
+      position: "top"
+      # center: false
     animation:
       enabled: true
       duration: 400
     blur_effect:
       enabled: false
-      acrylic: false
+      # acrylic: false
       dark_mode: false
       round_corners: false
       round_corners_type: "normal"
@@ -32,7 +32,7 @@ bars:
       hide_on_fullscreen: true
     dimensions:
       width: "100%"
-      height: 48
+      height: 36
     padding:
       top: 0
       left: 0
@@ -41,19 +41,19 @@ bars:
     widgets:
       left:
         - "glazewm_workspaces"
+        - "active_window"
+      center:
+        - "clock"
         - glazewm_tiling_direction
-        # - "active_window"
-        # - glazewm_binding_mode
-      # center:
-        # - "clock"
-      # right:
-      #   - "media"
+        - glazewm_binding_mode
+      right:
+        - "media"
       #   - "weather"
-      #   - "microphone"
-      #   - "volume"
-      #   - "battery"
-      #   - "notifications"
-      #   - "power_menu"
+        - "microphone"
+        - "volume"
+        - "battery"
+        - "notifications"
+        - "power_menu"
 widgets:
   home:
     type: "yasb.home.HomeWidget"
@@ -101,11 +101,11 @@ widgets:
         max_title_size: 80
         max_artist_size: 20
         show_source: true
-      label_shadow:
-        enabled: true
-        color: "#000000"
-        radius: 2
-        offset: [1, 1]
+      # label_shadow:
+      #   enabled: true
+      #   color: "#000000"
+      #   radius: 2
+      #   offset: [1, 1]
       scrolling_label:
         enabled: true
         update_interval_ms: 50
@@ -243,12 +243,10 @@ widgets:
     type: glazewm.workspaces.GlazewmWorkspacesWidget
     options:
       offline_label: GlazeWM Offline
-      hide_empty_workspaces: true
       hide_if_offline: true
       monitor_exclusive: true
       enable_scroll_switching: true
       reverse_scroll_direction: false
-      animation: false
   glazewm_tiling_direction:
     type: glazewm.tiling_direction.GlazewmTilingDirectionWidget
     options:
@@ -288,8 +286,3 @@ widgets:
         icon_medium: "\uf242"
         icon_high: "\uf241"
         icon_full: "\uf240"
-      label_shadow:
-        enabled: true
-        color: "black"
-        radius: 3
-        offset: [ 1, 1 ]
