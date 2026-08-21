@@ -10,3 +10,4 @@
 	tool = vscode
 [safe]
 	directory = %(prefix)///swp-insightdev.showplacewood.com/CopyCode/
+	directory = %(prefix)///swp-bartender.showplacewood.com/Bartender/
