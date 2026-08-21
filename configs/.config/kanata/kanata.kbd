@@ -14,7 +14,7 @@
 (defalias
   r (tap-hold $tap-time $hold-time r (multi lctl lalt lsft))
   u (tap-hold $tap-time $hold-time u (multi lctl lalt lsft))
-  capslock (tap-hold 100 100 esc (multi lmeta lctl lsft lalt))
+  capslock (tap-hold 100 100 esc (multi lctl))
   a (tap-hold $tap-time $hold-time a lctl)
   s (tap-hold $tap-time $hold-time s lalt)
   d (tap-hold $tap-time $hold-time d lmet)
@@ -25,7 +25,7 @@
   k (tap-hold $tap-time $hold-time k rmet)
   l (tap-hold $tap-time $hold-time l ralt)
   ; (tap-hold $tap-time $hold-time ; rctl)
-  ' (tap-hold 175 275 ' (multi lmeta lctl lsft lalt))
+  ' (tap-hold 175 275 ' (multi lctl))
   v (tap-hold $tap-time $hold-time v (multi lsft lctl))
   n (tap-hold $tap-time $hold-time n (multi lsft lctl))
 )
