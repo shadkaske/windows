@@ -12,3 +12,4 @@ configs/.config/git/.bash_history
 configs/.config/git/.ssh/config
 configs/.config/git/.config/jgit/config
 configs/.config/yasb/yasb-it-kaskshad.log
+configs/AppData/Local/lazygit/state-it-kaskshad.yml

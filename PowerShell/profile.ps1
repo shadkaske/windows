@@ -19,6 +19,9 @@ if ($gitPath) {
     $env:PATH += ";$gitPath"
 }
 
+# Add .Net to path
+$env:PATH += ";C:\Windows\Microsoft.NET\Framework64\v4.0.30319"
+
 Set-Alias -Name z -Value __zoxide_z -Option AllScope -Scope Global -Force
 Set-Alias -Name zi -Value __zoxide_zi -Option AllScope -Scope Global -Force
 Set-Alias -Name lg -Value lazygit -Option AllScope -Scope Global -Force
