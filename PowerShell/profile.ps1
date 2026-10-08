@@ -9,13 +9,11 @@ $env:STARSHIP_CONFIG = "$env:USERPROFILE\.config\starship\starship.toml"
 #     $env:PATH += ";$bwPath"
 # }
 
-$batPath = Get-ChildItem $env:LOCALAPPDATA\Microsoft\WinGet\Packages -Recurse -Filter bat.exe -ErrorAction SilentlyContinue | Select-Object -First 1 -ExpandProperty DirectoryName
-if ($batPath) {
-    $env:PATH += ";$batPath"
-}
+# bat is already on the user PATH (winget adds it), so no lookup is needed here.
 
-$gitPath = Get-ChildItem $env:LOCALAPPDATA\Programs\Git -Recurse -Filter git.exe -ErrorAction SilentlyContinue | Select-Object -First 1 -ExpandProperty DirectoryName
-if ($gitPath) {
+# Git\cmd is on the user PATH; also add Git\bin (bash, sh). A fixed path is faster than a recursive search.
+$gitPath = "$env:LOCALAPPDATA\Programs\Git\bin"
+if (Test-Path $gitPath) {
     $env:PATH += ";$gitPath"
 }
 
@@ -32,12 +30,17 @@ Set-PSReadlineKeyHandler -Key ctrl+d -Function DeleteCharOrExit
 
 Invoke-Expression (& { (zoxide init powershell | Out-String) })
 
-Import-Module posh-git
+# posh-git and PSFzf take ~1.2s to import, so load them once the prompt is idle instead of before it appears.
+# Their tab completion and fzf key bindings become available a moment after the first prompt.
+$null = Register-EngineEvent -SourceIdentifier PowerShell.OnIdle -MaxTriggerCount 1 -Action {
+    Import-Module posh-git -Global
 
-# Optional: Set default key bindings for history search (Ctrl+r), file search (Ctrl+t), and directory change (Alt+c)
-Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+t' -PSReadlineChordReverseHistory 'Ctrl+r' -PSReadlineChordCd 'Alt+c'
-# Optional: Enable tab expansion
-Set-PSFzfOption -TabExpansion
+    # Optional: Set default key bindings for history search (Ctrl+r), file search (Ctrl+t), and directory change (Alt+c)
+    Import-Module PSFzf -Global
+    Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+t' -PSReadlineChordReverseHistory 'Ctrl+r' -PSReadlineChordCd 'Alt+c'
+    # Optional: Enable tab expansion
+    Set-PSFzfOption -TabExpansion
+}
 
 Invoke-Expression (&starship init powershell)
 
